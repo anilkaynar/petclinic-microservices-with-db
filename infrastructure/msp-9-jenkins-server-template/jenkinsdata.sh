@@ -1,21 +1,18 @@
-#! /bin/bash
+#! /bin/bash -x
 # update os
 dnf update -y
 # set server hostname as jenkins-server
 hostnamectl set-hostname jenkins-server
 # install git
 dnf install git -y
-### java-11 deprecated for jenkins use java 17
-# install java 17
-dnf install java-17-amazon-corretto -y
-###
-# if any error occurs jenkins dependency related uncomment below
-# sudo dnf install fontconfig 
-# install jenkins
-wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+# install java 11
+dnf install java-11-amazon-corretto -y
+# install compatible jenkins version
 rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+dnf update -y
 dnf upgrade
-dnf install jenkins -y
+dnf install -y jenkins-2.426.1-1.1
 systemctl enable jenkins
 systemctl start jenkins
 # install docker
