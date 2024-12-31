@@ -5,8 +5,9 @@ dnf update -y
 hostnamectl set-hostname jenkins-server
 # install git
 dnf install git -y
-# install java 11
-dnf install java-11-amazon-corretto -y
+### java-11 deprecated for jenkins use java 17
+# install java 17
+dnf install java-17-amazon-corretto -y
 # install jenkins
 wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
 rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
