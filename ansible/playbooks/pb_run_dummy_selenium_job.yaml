@@ -1,7 +1,6 @@
 - hosts: all
   tasks:
   - name: run dummy selenium job
-  # clarusway image dead | prepare your own image later.
     shell: "docker run --rm -v {{ workspace }}:{{ workspace }} -w {{ workspace }} clarusway/selenium-py-chrome:latest python {{ item }}"
     with_fileglob: "{{ workspace }}/selenium-jobs/dummy*.py"
     register: output
