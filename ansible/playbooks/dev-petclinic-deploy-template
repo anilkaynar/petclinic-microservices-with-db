@@ -5,7 +5,7 @@
     file:
       path: /home/ubuntu/.docker
       state: directory
-      mode: 0755
+      mode: '0755'
 
   - name: copy the docker config file
     become: yes
